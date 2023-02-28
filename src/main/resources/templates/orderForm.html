@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+    <form method="post" th:action="@{/orders}" th:object="${tacoOrder}">
+      <h1>确认你的taco订单</h1>
+      <img th:src="@{/images/TacoCloud.jpg}"/>
+      <h3>这是你的taco订单</h3>
+
+      <a th:href = "@{/design}" id = "another">我要重新选taco</a><br/>
+      <ul>
+        <li th:each = "taco : ${tacoOrder.tacos}">
+          <span th:text = "${taco.name}">taco name</span></li>
+      </ul>
+
+      <h3>taco的运送目的地</h3>
+      <label for = "deliveryName">姓名: </label>
+      <input type = "text" th:field = "*{deliveryName}"/>
+      <br/>
+
+      <label for = "deliveryStreet">街道（详细地址）: </label>
+      <input type = "text" th:field = "*{deliveryStreet}"/>
+      <br/>
+
+      <label for = "deliveryCity">城市: </label>
+      <input type = "text" th:field = "*{deliveryCity}"/>
+      <br/>
+
+      <label for = "deliveryState">省份: </label>
+      <input type = "text" th:field = "*{deliveryState}"/>
+      <br/>
+
+      <label for = "deliveryZip">邮编: </label>
+      <input type = "text" th:field = "*{deliveryZip}"/>
+      <br/>
+
+      <h3>支付：</h3>
+      <label for = "ccNumber">信用卡: </label>
+      <input type = "text" th:field = "*{ccNumber}"/>
+      <br/>
+
+      <label for = "ccExpiration">过期: </label>
+      <input type = "text" th:field = "*{ccExpiration}"/>
+      <br/>
+
+      <label for = "ccCVV">信用卡验证码: </label>
+      <input type = "text" th:field = "*{ccCVV}"/>
+      <br/>
+
+      <input type = "submit" value = "Submit Order"/>
+    </form>
+</body>
+</html>
